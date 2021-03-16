@@ -1,0 +1,24 @@
+JAV
+    names/stars = idols
+        name
+        get img from google?
+        note
+        extra -> key: value = json
+        fav
+        timestamps
+    codes/movies
+        code 
+        tags
+        note
+        extra -> key: value = json
+        fav
+        timestamps
+    manyToMany movies and stars (ffs)
+        list all movies (once)
+            fetch stars using pivot
+        list all stars (once)
+            fetch movies using pivot
+    site links
+    tags
+    manyToMany tags and movies
+

@@ -14562,10 +14562,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "About",
+  name: 'About',
   data: function data() {
     return {
-      description: "This is an example route `/about`"
+      description: 'This is an example route `/about`'
     };
   }
 });
@@ -14582,6 +14582,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common */ "./resources/js/common.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -14591,7 +14593,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    fetch("/api/test").then(function (res) {
+    fetch(_common__WEBPACK_IMPORTED_MODULE_0__.ROOT_PATH + '/api/test').then(function (res) {
       return res.json();
     }).then(function (data) {
       return _this.data = data;
@@ -14617,7 +14619,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'Home',
   data: function data() {
     return {
-      description: "This is a Laravel 8.x with vue 3.x boilerplate"
+      description: 'This is a Laravel 8.x with vue 3.x boilerplate'
     };
   }
 });
@@ -14725,6 +14727,20 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/common.js":
+/*!********************************!*\
+  !*** ./resources/js/common.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ROOT_PATH": () => (/* binding */ ROOT_PATH)
+/* harmony export */ });
+var ROOT_PATH = '/pod/public';
+
+/***/ }),
+
 /***/ "./resources/js/router/index.js":
 /*!**************************************!*\
   !*** ./resources/js/router/index.js ***!
@@ -14735,29 +14751,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
 /* harmony import */ var _views_Home_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/Home.vue */ "./resources/js/views/Home.vue");
 /* harmony import */ var _views_About_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../views/About.vue */ "./resources/js/views/About.vue");
 /* harmony import */ var _views_ApiTest_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../views/ApiTest.vue */ "./resources/js/views/ApiTest.vue");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common */ "./resources/js/common.js");
+
 
 
 
 
 var routes = [{
-  path: "/",
-  name: "Home",
+  path: '/',
+  name: 'Home',
   component: _views_Home_vue__WEBPACK_IMPORTED_MODULE_0__.default
 }, {
-  path: "/about",
-  name: "About",
+  path: '/about',
+  name: 'About',
   component: _views_About_vue__WEBPACK_IMPORTED_MODULE_1__.default
 }, {
-  path: "/api-test",
-  name: "ApiTest",
+  path: '/api-test',
+  name: 'ApiTest',
   component: _views_ApiTest_vue__WEBPACK_IMPORTED_MODULE_2__.default
 }];
-var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_3__.createRouter)({
-  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_3__.createWebHistory)(),
+var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_4__.createRouter)({
+  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_4__.createWebHistory)(_common__WEBPACK_IMPORTED_MODULE_3__.ROOT_PATH),
   routes: routes
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);

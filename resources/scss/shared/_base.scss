@@ -1,0 +1,15 @@
+:root {
+    font-size: 10px;
+}
+
+body {
+    font-family: $body;
+    color: $text;
+}
+
+.desc {
+    margin: 100px;
+    font-size: 2rem;
+    padding: 1em;
+    border-radius: 10px;
+}
