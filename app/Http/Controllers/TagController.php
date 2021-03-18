@@ -2,62 +2,48 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TagCreateUpdateRequest;
+use App\Models\Tag;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return response(Tag::paginate(20));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(TagCreateUpdateRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $tag = Tag::create($validated);
+        return response($tag);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        try {
+            return response(Tag::findOrFail($id));
+        } catch (ModelNotFoundException $ex) {
+            return response(['message' => 'Not found'], 404);
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(TagCreateUpdateRequest $request, $id)
     {
-        //
+        try {
+            $validated = $request->validated();
+            Tag::findOrFail($id)->update($validated);
+            return response(null, 204);
+        } catch (ModelNotFoundException $ex) {
+            return response(['message' => 'Not found'], 404);
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        Tag::destroy($id);
+        return response(null, 204);
     }
 }

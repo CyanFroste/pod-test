@@ -11,6 +11,10 @@ class Tag extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'favorite' => 'boolean',
+    ];
+
     public function movies()
     {
         return $this->belongsToMany(Movie::class, 'movie_tag');

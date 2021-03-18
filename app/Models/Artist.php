@@ -13,11 +13,11 @@ class Artist extends Model
 
     protected $casts = [
         'extra' => 'array',
+        'favorite' => 'boolean'
     ];
 
     public function hentai()
     {
         return $this->hasMany(Hentai::class);
     }
-
 }

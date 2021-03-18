@@ -13,6 +13,7 @@ class Movie extends Model
 
     protected $casts = [
         'extra' => 'array',
+        'favorite' => 'boolean'
     ];
 
     public function stars()

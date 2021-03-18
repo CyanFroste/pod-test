@@ -13,6 +13,9 @@ class Studio extends Model
 
     protected $casts = [
         'extra' => 'array',
+        'favorite' => 'boolean',
+        'hentai' => 'boolean',
+        'movie' => 'boolean'
     ];
 
     public function hentai()

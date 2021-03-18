@@ -19,7 +19,7 @@ class CreateHentaiTable extends Migration
             $table->string('name', 255)->unique();
             $table->string('language', 255)->default('japanese');
             $table->string('origin', 255)->default('japan');
-            $table->string('code', 255)->nullable();
+            $table->string('code', 255)->unique()->nullable();
             $table->boolean('anime')->default(true);
             $table->boolean('doujin')->default(false);
             $table->boolean('3d')->default(false);

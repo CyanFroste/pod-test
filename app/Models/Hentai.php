@@ -15,6 +15,10 @@ class Hentai extends Model
 
     protected $casts = [
         'extra' => 'array',
+        'anime' => 'boolean',
+        'doujin' => 'boolean',
+        '3d' => 'boolean',
+        'favorite' => 'boolean',
     ];
 
     public function tags()
