@@ -1,24 +1,63 @@
-JAV
-    names/stars = idols
-        name
-        get img from google?
-        note
-        extra -> key: value = json
-        fav
-        timestamps
-    codes/movies
-        code 
-        tags
-        note
-        extra -> key: value = json
-        fav
-        timestamps
-    manyToMany movies and stars (ffs)
-        list all movies (once)
-            fetch stars using pivot
-        list all stars (once)
-            fetch movies using pivot
-    site links
-    tags
-    manyToMany tags and movies
+stars
+    name
+    ethnicity
+    get img from google?
+    note
+    extra -> key: value = json
+    fav
+    timestamps
+movies
+    code
+    name
+    origin
+    studio(_id)
+    note
+    extra -> key: value = json
+    fav
+    timestamps
+manyToMany movies and stars (ffs)
+    list all movies (once)
+        fetch stars using pivot
+    list all stars (once)
+        fetch movies using pivot
+oneToMany studio and movies
+
+tags
+    name
+    count
+    note
+manyToMany tags and movies
+
+studio
+    name
+    isMovie
+    isAnimation
+    note
+
+
+site links
+
+
+hentai
+    name
+    language
+    origin
+    code (if doujin or similar)
+    isDoujin
+    is3D
+    isAnime
+    studio(_id)
+    artist(_id)
+    note
+
+
+manyToMany tags and hentai
+oneToMany artist and hentai
+oneToMany studio and hentai
+
+
+
+artists
+    name
+    note
 
