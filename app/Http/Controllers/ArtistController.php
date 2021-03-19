@@ -5,13 +5,25 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ArtistCreateUpdateRequest;
 use App\Models\Artist;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
 
 class ArtistController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        return response(Artist::with('hentai')->paginate(20));
+        $artists = Artist::with('hentai');
+
+        // favorite
+        if ($request->has('favorite')) {
+            $artists->where('favorite', (bool) $request->favorite);
+        }
+
+        // name
+
+        // search
+
+        return response($artists->paginate(20)->withQueryString());
     }
 
     public function store(ArtistCreateUpdateRequest $request)

@@ -19,6 +19,11 @@ class CreateStarsTable extends Migration
             $table->string('name', 255)->unique();
             $table->string('ethnicity', 255)->nullable();
             $table->text('image')->nullable();
+
+            $table->boolean('actor')->default(true);
+            $table->boolean('cosplayer')->default(false);
+            $table->boolean('model')->default(false);
+
             $table->text('note')->nullable();
             $table->json('extra')->nullable();
             $table->boolean('favorite')->default(false);

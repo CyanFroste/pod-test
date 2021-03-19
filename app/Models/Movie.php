@@ -2,18 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Movie extends Model
 {
-    use HasFactory;
 
     protected $guarded = [];
 
     protected $casts = [
         'extra' => 'array',
-        'favorite' => 'boolean'
+        'favorite' => 'boolean',
     ];
 
     public function stars()
@@ -30,4 +28,13 @@ class Movie extends Model
     {
         return $this->belongsTo(Studio::class);
     }
+
+    // scopes
+    // public function scopeTagged($query, $tag)
+    // {
+    //     $query->whereHas('tags', function ($query) use ($tag) {
+    //         $query->where('name', $tag);
+    //     });
+    // }
+
 }

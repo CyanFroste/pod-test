@@ -10,9 +10,38 @@ use Illuminate\Http\Request;
 class StarController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        return response(Star::with('movies')->paginate(20));
+
+        $stars = Star::with('movies');
+
+        // actor
+        if ($request->has('actor')) {
+            $stars->where('actor', (bool) $request->actor);
+        }
+
+        // cosplayer
+        if ($request->has('cosplayer')) {
+            $stars->where('cosplayer', (bool) $request->cosplayer);
+        }
+
+        // model
+        if ($request->has('model')) {
+            $stars->where('model', (bool) $request->model);
+        }
+
+        // favorite
+        if ($request->has('favorite')) {
+            $stars->where('favorite', (bool) $request->favorite);
+        }
+
+        // name
+
+        // ethnicity
+
+        // search
+
+        return response($stars->paginate(20)->withQueryString());
     }
 
     public function store(StarCreateUpdateRequest $request)

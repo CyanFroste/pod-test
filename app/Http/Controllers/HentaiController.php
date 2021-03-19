@@ -5,12 +5,63 @@ namespace App\Http\Controllers;
 use App\Http\Requests\HentaiCreateUpdateRequest;
 use App\Models\Hentai;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
 
 class HentaiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return response(Hentai::with('tags')->with('studio')->with('artist')->paginate(20));
+        $hentai = Hentai::with('tags')->with('studio')->with('artist');
+
+        // tag
+        if ($request->tag) {
+            $hentai->whereHas('tags', function ($query) use ($request) {
+                $query->where('name', $request->tag);
+                // ? orWhere to search by `id`
+            });
+        }
+
+        // artist
+        if ($request->artist) {
+            $hentai->whereHas('artists', function ($query) use ($request) {
+                $query->where('name', $request->artist);
+            });
+        }
+
+        // anime
+        if ($request->has('anime')) {
+            $hentai->where('anime', (bool) $request->anime);
+        }
+
+        // doujin
+        if ($request->has('doujin')) {
+            $hentai->where('doujin', (bool) $request->doujin);
+        }
+
+        // 3d
+        if ($request->has('3d')) {
+            $hentai->where('3d', (bool) $request['3d']);
+        }
+
+        // favorite
+        if ($request->has('favorite')) {
+            $hentai->where('favorite', (bool) $request->favorite);
+        }
+
+        // code
+        if ($request->code) {
+            $hentai->where('code', $request->code);
+        }
+
+        // origin
+
+        // language
+
+        // name
+
+        // search
+
+        return response($hentai->paginate(20)->withQueryString());
     }
 
     public function store(HentaiCreateUpdateRequest $request)
@@ -20,8 +71,9 @@ class HentaiController extends Controller
 
         // attach tags
         // no validation tho
-        if ($request->tags)
-            $hentai->tags()->syncWithoutDetaching((array)$request->tags);
+        if ($request->tags) {
+            $hentai->tags()->syncWithoutDetaching((array) $request->tags);
+        }
 
         return response($hentai);
     }
@@ -46,8 +98,9 @@ class HentaiController extends Controller
 
             // attach tags
             // no validation tho
-            if ($request->tags)
-                $hentai->tags()->syncWithoutDetaching((array)$request->tags);
+            if ($request->tags) {
+                $hentai->tags()->syncWithoutDetaching((array) $request->tags);
+            }
 
             return response(null, 204);
         } catch (ModelNotFoundException $ex) {

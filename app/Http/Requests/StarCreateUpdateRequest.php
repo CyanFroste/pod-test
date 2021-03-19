@@ -14,13 +14,18 @@ class StarCreateUpdateRequest extends FormRequest
                 'required',
                 'min:2',
                 'max:255',
-                Rule::unique('stars')->ignore($this->id)
+                Rule::unique('stars')->ignore($this->id),
             ],
             'ethnicity' => 'min:2|max:255|nullable',
             'image' => 'min:2|nullable',
+
+            'actor' => 'boolean',
+            'cosplayer' => 'boolean',
+            'model' => 'boolean',
+
             'note' => 'min:2|nullable',
             'extra' => 'array|nullable',
-            'favorite' => 'boolean'
+            'favorite' => 'boolean',
         ];
     }
 }

@@ -35,6 +35,22 @@ class MovieController extends Controller
             });
         }
 
+        // favorite
+        if ($request->has('favorite')) {
+            $movies->where('favorite', (bool) $request->favorite);
+        }
+
+        // code
+        if ($request->code) {
+            $movies->where('code', $request->code);
+        }
+
+        // origin
+
+        // name
+
+        // search
+
         return response($movies->paginate(20)->withQueryString());
     }
 

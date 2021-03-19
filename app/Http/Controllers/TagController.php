@@ -9,9 +9,21 @@ use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return response(Tag::paginate(20));
+
+        $tags = Tag::orderBy('count', 'desc');
+
+        // favorite
+        if ($request->has('favorite')) {
+            $tags->where('favorite', (bool) $request->favorite);
+        }
+
+        // name
+
+        // search
+
+        return response($tags->paginate(20)->withQueryString());
     }
 
     public function store(TagCreateUpdateRequest $request)

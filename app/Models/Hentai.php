@@ -2,13 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Hentai extends Model
 {
-    use HasFactory;
-
     protected $table = 'hentai';
 
     protected $guarded = [];
