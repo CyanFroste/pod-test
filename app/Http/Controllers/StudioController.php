@@ -11,7 +11,7 @@ class StudioController extends Controller
 
     public function index()
     {
-        return response(Studio::paginate(20));
+        return response(Studio::with('movies')->with('hentai')->paginate(20));
     }
 
     public function store(StudioCreateUpdateRequest $request)
@@ -24,7 +24,7 @@ class StudioController extends Controller
     public function show($id)
     {
         try {
-            return response(Studio::findOrFail($id));
+            return response(Studio::with('movies')->with('hentai')->findOrFail($id));
         } catch (ModelNotFoundException $ex) {
             return response(['message' => 'Not found'], 404);
         }

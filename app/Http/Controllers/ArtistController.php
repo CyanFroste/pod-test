@@ -11,7 +11,7 @@ class ArtistController extends Controller
 
     public function index()
     {
-        return response(Artist::paginate(20));
+        return response(Artist::with('hentai')->paginate(20));
     }
 
     public function store(ArtistCreateUpdateRequest $request)
@@ -23,7 +23,7 @@ class ArtistController extends Controller
     public function show($id)
     {
         try {
-            return response(Artist::findOrFail($id));
+            return response(Artist::with('hentai')->findOrFail($id));
         } catch (ModelNotFoundException $ex) {
             return response(['message' => 'Not found'], 404);
         }

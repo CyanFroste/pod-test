@@ -12,21 +12,21 @@ class StarController extends Controller
 
     public function index()
     {
-        return response(Star::paginate(20));
+        return response(Star::with('movies')->paginate(20));
     }
 
     public function store(StarCreateUpdateRequest $request)
     {
         $validated = $request->validated();
         $star = Star::create($validated);
-        // attach movies
+        // ? attach movies
         return response($star);
     }
 
     public function show($id)
     {
         try {
-            return response(Star::findOrFail($id));
+            return response(Star::with('movies')->findOrFail($id));
         } catch (ModelNotFoundException $ex) {
             return response(['message' => 'Not found'], 404);
         }
@@ -37,7 +37,7 @@ class StarController extends Controller
         try {
             $validated = $request->validated();
             Star::findOrFail($id)->update($validated);
-            // attach movies
+            // ? attach movies
             return response(null, 204);
         } catch (ModelNotFoundException $ex) {
             return response(['message' => 'Not found'], 404);

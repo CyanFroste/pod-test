@@ -5,27 +5,33 @@ namespace App\Http\Controllers;
 use App\Http\Requests\HentaiCreateUpdateRequest;
 use App\Models\Hentai;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
 
 class HentaiController extends Controller
 {
     public function index()
     {
-        return response(Hentai::paginate(20));
+        return response(Hentai::with('tags')->with('studio')->with('artist')->paginate(20));
     }
 
     public function store(HentaiCreateUpdateRequest $request)
     {
         $validated = $request->validated();
         $hentai = Hentai::create($validated);
+
         // attach tags
+        // no validation tho
+        if ($request->tags)
+            $hentai->tags()->syncWithoutDetaching((array)$request->tags);
+
         return response($hentai);
     }
 
     public function show($id)
     {
         try {
-            return response(Hentai::findOrFail($id));
+            // eager loading
+            $hentai = Hentai::with('tags')->with('studio')->with('artist')->findOrFail($id);
+            return response($hentai);
         } catch (ModelNotFoundException $ex) {
             return response(['message' => 'Not found'], 404);
         }
@@ -35,8 +41,14 @@ class HentaiController extends Controller
     {
         try {
             $validated = $request->validated();
-            Hentai::findOrFail($id)->update($validated);
+            $hentai = Hentai::findOrFail($id);
+            $hentai->update($validated);
+
             // attach tags
+            // no validation tho
+            if ($request->tags)
+                $hentai->tags()->syncWithoutDetaching((array)$request->tags);
+
             return response(null, 204);
         } catch (ModelNotFoundException $ex) {
             return response(['message' => 'Not found'], 404);
