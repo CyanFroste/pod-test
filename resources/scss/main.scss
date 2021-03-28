@@ -3,3 +3,15 @@
 @import './shared/typography';
 @import './shared/variables';
 @import './shared/base';
+@import './shared/layout';
+
+@import './pages/home';
+@import './pages/movies';
+@import './pages/create_movie';
+
+@import './components/buttons';
+@import './components/inputs';
+@import './components/selectbox';
+@import './components/sidebar';
+@import './components/views';
+@import './components/cards';

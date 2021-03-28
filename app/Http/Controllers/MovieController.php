@@ -69,7 +69,7 @@ class MovieController extends Controller
             $movie->tags()->syncWithoutDetaching((array) $request->tags);
         }
 
-        return response($movie);
+        return response($movie->fresh(['stars', 'tags', 'studio']));
     }
 
     public function show($id)

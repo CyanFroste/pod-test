@@ -1,0 +1,42 @@
+.sidebar {
+    height: 100vh;
+    width: $sidebar-width;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: $dark;
+    padding: 0 $m;
+
+    .logo {
+        font-size: 5rem;
+        color: $light;
+        text-decoration: none;
+        padding: $m;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        // align-items: center;
+        padding: $m 0;
+
+        .link:not(:last-of-type) {
+            margin-bottom: $s;
+        }
+
+        .link {
+            color: $primary;
+            text-decoration: none;
+            padding: $m;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            transition: 100ms ease-in;
+            transition-property: transform, background-color;
+            // font-weight: bold;
+        }
+        .link:hover {
+            background-color: darken($dark, 10%);
+            transform: translateX(-$s);
+        }
+    }
+}

@@ -1,0 +1,6 @@
+.grid-view {
+    display: grid;
+    gap: $m;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    padding: $m;
+}

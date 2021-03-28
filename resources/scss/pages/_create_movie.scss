@@ -1,0 +1,40 @@
+.create-movie-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($dark, 0.7);
+
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .create-movie {
+        box-shadow: $bs;
+        padding: $l;
+        background-color: $light;
+        width: 600px;
+        min-height: 600px;
+
+        .title {
+            font-size: 3.6rem;
+            margin-bottom: $l;
+            // text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            > *:not(:last-child) {
+                margin-bottom: $m;
+            }
+
+            .btn {
+                align-self: flex-end;
+            }
+        }
+    }
+}

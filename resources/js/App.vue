@@ -1,7 +1,14 @@
 <template>
-    <router-view />
+    <!-- don't use main tag anywhere else -->
+    <main>
+        <router-view />
+    </main>
+    <sidebar />
 </template>
 
 <script>
-export default {}
+import Sidebar from './components/Sidebar.vue'
+export default {
+    components: { Sidebar },
+}
 </script>

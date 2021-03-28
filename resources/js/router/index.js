@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter } from 'vue-router'
 import Home from '../views/Home.vue'
-import About from '../views/About.vue'
-import ApiTest from '../views/ApiTest.vue'
+import Movies from '../views/Movies.vue'
+import CreateMovie from '../views/CreateMovie.vue'
 import { ROOT_PATH } from '../common'
 
 const routes = [
@@ -11,14 +11,20 @@ const routes = [
         component: Home,
     },
     {
-        path: '/about',
-        name: 'About',
-        component: About,
-    },
-    {
-        path: '/api-test',
-        name: 'ApiTest',
-        component: ApiTest,
+        path: '/movies',
+        name: 'Movies',
+        component: Movies,
+        children: [
+            {
+                path: 'create',
+                component: CreateMovie,
+                name: 'CreateMovie',
+                props: true,
+                meta: {
+                    show: true,
+                },
+            },
+        ],
     },
 ]
 

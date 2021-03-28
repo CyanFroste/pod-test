@@ -14,19 +14,18 @@ class MovieCreateUpdateRequest extends FormRequest
                 'min:2',
                 'max:255',
                 Rule::unique('movies')->ignore($this->id),
-                'nullable'
+                'nullable',
             ],
             'name' => [
                 'min:2',
                 'max:255',
                 Rule::unique('movies')->ignore($this->id),
-                'nullable'
             ],
             'origin' => 'min:2|max:255|nullable',
             'note' => 'min:2|nullable',
             'extra' => 'array|nullable',
             'favorite' => 'boolean',
-            'studio_id' => 'integer|exists:studios,id|nullable'
+            'studio_id' => 'integer|exists:studios,id|nullable',
         ];
     }
 }

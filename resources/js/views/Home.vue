@@ -1,14 +1,14 @@
 <template>
-    <div class="desc">{{ description }}</div>
+    <section class="home">
+        <h1 class="title">Home</h1>
+    </section>
 </template>
 
 <script>
 export default {
     name: 'Home',
     data() {
-        return {
-            description: 'This is a Laravel 8.x with vue 3.x boilerplate',
-        }
+        return {}
     },
 }
 </script>

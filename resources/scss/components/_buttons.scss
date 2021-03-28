@@ -1,0 +1,36 @@
+.btn {
+    text-decoration: none;
+    padding: $s $m;
+    color: $light;
+    background-color: $primary;
+    letter-spacing: 0.06em;
+    box-shadow: $bs;
+    font-weight: bold;
+    text-transform: uppercase;
+    // animation
+    transition: 100ms ease-in-out;
+    transition-property: color, background-color;
+    // ? custom animation
+}
+
+.btn:hover {
+    background-color: $dark;
+    color: $light;
+}
+
+.btn-ghost {
+    font-size: 1.4rem;
+    text-decoration: none;
+    padding: $xs $s;
+    // font-weight: bold;
+    text-transform: uppercase;
+    // animation
+    transition: 100ms ease-in-out;
+    transition-property: color, background-color;
+    // ? custom animation
+}
+
+.btn-ghost:hover {
+    background-color: $dark;
+    color: $light;
+}

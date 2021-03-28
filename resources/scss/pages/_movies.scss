@@ -1,0 +1,55 @@
+.movies {
+    // need to seperate this component
+    .controls {
+        padding-bottom: $s;
+        // border-bottom: 1px solid $bg-dark;
+        display: flex;
+        align-items: flex-end;
+        position: sticky;
+        top: 0;
+        background-color: $light;
+        padding: $m;
+        box-shadow: $bs;
+
+        .title {
+            margin-right: $m;
+            margin-bottom: -$xs;
+        }
+
+        button,
+        input {
+            margin: 0 $s;
+        }
+        input {
+            outline: none;
+            height: $l;
+            border-bottom: $bl;
+        }
+    }
+
+    // card for the movies view
+    .card {
+        .code {
+            // font-size: 1.4rem;
+            text-transform: uppercase;
+            color: lighten($dark, $amount: 20%);
+        }
+
+        .creator {
+            font-size: 1.4rem;
+            color: lighten($dark, $amount: 20%);
+        }
+
+        .actions {
+            .favorite {
+                font-size: 1.4rem;
+                padding: $xs $s;
+                background-color: $dark;
+                color: $light;
+            }
+            .favorite.active {
+                color: $primary;
+            }
+        }
+    }
+}

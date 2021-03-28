@@ -1,0 +1,52 @@
+.card {
+    padding: $m;
+    box-shadow: $bs;
+    display: flex;
+    flex-direction: column;
+    > *:not(:last-child) {
+        margin-bottom: $m;
+    }
+
+    .name {
+        font-size: 2.4rem;
+    }
+
+    .tags,
+    .stars {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .stars {
+        a {
+            // text-transform: lowercase;
+            margin-right: $s;
+            margin-bottom: $s;
+        }
+    }
+
+    .note {
+        line-height: 1.4;
+    }
+
+    .tags span {
+        background-color: lighten($dark, $amount: 60%);
+        padding: $s;
+        margin-right: $xs;
+        margin-bottom: $xs;
+        font-size: 1.2rem;
+        // text-transform: uppercase;
+    }
+
+    .actions {
+        padding-top: $m;
+        border-top: $bl;
+        justify-self: flex-end;
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        > *:not(:first-of-type) {
+            margin-left: $xs;
+        }
+    }
+}

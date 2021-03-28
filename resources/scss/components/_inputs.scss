@@ -1,0 +1,61 @@
+.textfield {
+    display: flex;
+    flex-direction: column;
+    label {
+        font-size: 1.4rem;
+        margin-bottom: $xs;
+        color: lighten($dark, $amount: 20%);
+    }
+    input,
+    textarea {
+        outline: none;
+        border-bottom: $bl;
+        padding: $s $xs;
+    }
+    textarea {
+        resize: vertical;
+        max-height: 120px;
+        min-height: $l;
+    }
+}
+
+.checkbox {
+    width: fit-content;
+    label {
+        font-size: 1.4rem;
+        color: lighten($dark, $amount: 20%);
+        display: flex;
+        align-items: center;
+    }
+    input[type='checkbox'] {
+        display: none;
+    }
+    input[type='checkbox'] ~ .box {
+        width: 1.2em;
+        height: 1.2em;
+        border: $bl;
+        margin-left: $s;
+    }
+    input[type='checkbox']:checked ~ .box::after {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        content: '✔';
+        top: -2px;
+        left: -2px;
+        width: 1.2em;
+        height: 1.2em;
+        border: 2px solid $primary;
+    }
+}
+
+.select {
+    display: flex;
+    flex-direction: column;
+    label {
+        font-size: 1.4rem;
+        margin-bottom: $xs;
+        color: lighten($dark, $amount: 20%);
+    }
+}
